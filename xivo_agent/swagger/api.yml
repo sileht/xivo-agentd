@@ -189,6 +189,18 @@ paths:
         description: Agent's number
         required: true
         type: integer
+      - name: body
+        in: body
+        description: The reason when pause the agent
+        required: false
+        schema:
+          $ref: '#/definitions/AgentPauseReason'
+      - name: body
+        in: body
+        description: The reason when unpause the agent
+        required: false
+        schema:
+          $ref: '#/definitions/AgentPauseReason'
       responses:
         '204':
           description: The operation was performed succesfully
@@ -239,6 +251,12 @@ paths:
         description: Agent's number
         required: true
         type: integer
+      - name: body
+        in: body
+        description: The reason when unpause the agent
+        required: false
+        schema:
+          $ref: '#/definitions/AgentPauseReason'
       responses:
         '204':
           description: The operation was performed succesfully
@@ -348,6 +366,9 @@ definitions:
       context:
         type: string
         description: Context
+      state_interface:
+        type: string
+        description: Optional interface to join the agent
   Queue:
     title: Queue
     properties:

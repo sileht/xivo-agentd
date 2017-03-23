@@ -34,12 +34,13 @@ class LoginAction(object):
         self._line_dao = line_dao
         self._bus_publisher = bus_publisher
 
-    def login_agent(self, agent, extension, context):
+    def login_agent(self, agent, extension, context, state_interface):
         # Precondition:
         # * agent is not logged
         # * extension@context is not used
         interface = self._get_interface(agent)
-        state_interface = self._get_state_interface(extension, context)
+        if not state_interface:
+            state_interface = self._get_state_interface(extension, context)
         self._update_agent_status(agent, extension, context, interface, state_interface)
         self._update_queue_log(agent, extension, context)
         self._update_asterisk(agent, interface, state_interface)
