@@ -88,11 +88,3 @@ class ServiceProxy(object):
     def on_queue_deleted(self, queue_id):
         with self._lock:
             return self.on_queue_handler.handle_on_queue_deleted(queue_id)
-
-    def on_agent_paused(self, msg):
-        with self._lock:
-            return self.on_queue_handler.handle_on_agent_paused(msg)
-
-    def on_agent_unpaused(self, msg):
-        with self._lock:
-            return self.on_queue_handler.handle_on_agent_unpaused(msg)
